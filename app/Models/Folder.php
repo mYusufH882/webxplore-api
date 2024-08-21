@@ -11,7 +11,7 @@ class Folder extends Model
 
     public function files()
     {
-        return $this->hasMany(File::class);
+        return $this->hasMany(Files::class);
     }
 
     public function parent()
@@ -19,7 +19,7 @@ class Folder extends Model
         return $this->belongsTo(Folder::class, 'parent_id');
     }
 
-    public function children()
+    public function subfolders()
     {
         return $this->hasMany(Folder::class, 'parent_id');
     } 

@@ -16,7 +16,9 @@ class FolderController extends Controller
     public function index()
     {
         $folder = Folder::query();
-        $folders = $folder->get();
+        $folders = $folder->with('subfolders', 'subfolders.files')
+                    ->whereNull('parent_id')
+                    ->get();
 
         return $this->successResponse($folders, "List Folder");
     }

@@ -22,6 +22,16 @@ class FileController extends Controller
         return $this->successResponse($files, 'List Files');
     }
 
+    public function FilesbyFolder($id)
+    {
+        $file = Files::query();
+        $files = $file->with('folder')
+                    ->where('id', $id)
+                    ->get();
+
+        return $this->successResponse($files, 'Files selected by folder !');
+    }
+
     public function storeFile(FileInputRequest $request)
     {
         DB::beginTransaction();
