@@ -21,6 +21,6 @@ class Folder extends Model
 
     public function subfolders()
     {
-        return $this->hasMany(Folder::class, 'parent_id');
+        return $this->hasMany(Folder::class, 'parent_id')->with('subfolders', 'files');
     } 
 }

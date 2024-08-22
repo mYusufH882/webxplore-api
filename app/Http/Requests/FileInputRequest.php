@@ -24,7 +24,7 @@ class FileInputRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'folder_id' => 'nullable|exists:folders,id',
-            'file' => 'required|file|max:2048'
+            'file' => 'required|file|max:2048|mimes:jpeg,png,jpg'
         ];
     }
 }
