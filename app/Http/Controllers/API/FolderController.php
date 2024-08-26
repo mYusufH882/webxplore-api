@@ -18,6 +18,7 @@ class FolderController extends Controller
         $folder = Folder::query();
         $folders = $folder->with('subfolders', 'subfolders.files')
                     ->whereNull('parent_id')
+                    ->orderBy('name', 'ASC')
                     ->get();
 
         return $this->successResponse($folders, "List Folder");
